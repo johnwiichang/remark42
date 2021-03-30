@@ -623,7 +623,7 @@ class Comment extends Component<CommentProps, State> {
             <div
               className={b('comment__text', { mix: b('raw-content', {}, { theme: props.theme }) })}
               // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: o.text }}
+              dangerouslySetInnerHTML={{ __html: o.user.verified || isAdmin || isCurrentUser ? o.text : `<em>${intl.formatMessage(messages.unverifiedUser)}</em>` }}
             />
           </div>
         </article>
@@ -769,7 +769,7 @@ class Comment extends Component<CommentProps, State> {
               className={b('comment__text', { mix: b('raw-content', {}, { theme: props.theme }) })}
               ref={this.textNode}
               // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: o.text }}
+              dangerouslySetInnerHTML={{ __html: o.user.verified || isAdmin || isCurrentUser ? o.text : `<em>${intl.formatMessage(messages.unverifiedUser)}</em>` }}
             />
           )}
 
